@@ -1,14 +1,22 @@
 import 'dart:io';
 import 'package:csv/csv.dart';
-import 'package:dart_todo/todo_list_abstract_class.dart';
+import 'interfaces/list_interface.dart';
 
 // class TodoList extends TodoListInterface {}
-class TodoList {
+class TodoList extends ListInterface {
   List<List<dynamic>>? csv;
 
   TodoList(String path) {
     File csvFile = File(path)..createSync();
     String csvContent = csvFile.readAsStringSync();
     csv = CsvToListConverter().convert(csvContent);
+  }
+
+  void add(String a) {
+    print('Added');
+  }
+
+  void remove(int i) {
+    print('Removed');
   }
 }

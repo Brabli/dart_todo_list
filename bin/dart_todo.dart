@@ -1,10 +1,17 @@
-import 'dart:io';
-import 'package:dart_todo/todo_list.dart';
+import 'dart:io' show Directory, File, Platform;
+// import 'package:dart_todo/todo_list.dart';
 
 void main(List<String> arguments) {
-  /// Creates a file
-  // File('./test.csv').createSync();
+  String currentPath = Directory.current.path;
+  String homePath = Platform.environment['HOME']!;
+  List pathVar = Platform.environment['PATH']!.split(':');
 
-  var todo = TodoList('./test.csv');
-  print(todo.csv?[0][0]);
+  /// Creates a file at /Users/bradley
+  File('$homePath/test.csv').createSync();
+
+  print(currentPath);
+  print(pathVar);
 }
+
+  // var todo = TodoList('./test.csv');
+  // print(todo.csv?[0][0]);}

@@ -1,5 +1,6 @@
-abstract class TodoListInterface {
-  /// Adds a new list item
+abstract class ListInterface {
+
+  /// Adds a new row to the CSV file
   void add(String item);
 
   /// Removes a list item at the given ONE BASED index
@@ -8,5 +9,8 @@ abstract class TodoListInterface {
   /*
   Item CSV Fields
   Item, Index, Time and Date Added, Tasks
+
+  History CSV Fields
+  Timestamp, Action, Item
   */
 }
