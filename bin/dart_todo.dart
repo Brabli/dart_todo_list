@@ -1,17 +1,18 @@
-import 'dart:io' show Directory, File, Platform;
-// import 'package:dart_todo/todo_list.dart';
+import 'dart:io' show Platform;
 
-void main(List<String> arguments) {
-  String currentPath = Directory.current.path;
-  String homePath = Platform.environment['HOME']!;
-  List pathVar = Platform.environment['PATH']!.split(':');
-
-  /// Creates a file at /Users/bradley
-  File('$homePath/test.csv').createSync();
-
-  print(currentPath);
-  print(pathVar);
+void main(List<String> arguments) async {
+  // Creates a file at /Users/bradley
+  // String homePath = Platform.environment['HOME']!;
 }
 
-  // var todo = TodoList('./test.csv');
-  // print(todo.csv?[0][0]);}
+/// Returns true if the current script is executing from a directory on the PATH
+bool currentScriptInPath() {
+  String scriptPath = Platform.script.path.substring(
+      0,
+      Platform.script.path.length -
+          Platform.script.pathSegments.last.length -
+          1);
+  List<String> paths = Platform.environment['PATH']!.split(':');
+
+  return paths.contains(scriptPath);
+}
