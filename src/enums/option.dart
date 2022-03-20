@@ -1,0 +1,1 @@
+enum Option { remove, add }
