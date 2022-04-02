@@ -8,3 +8,4 @@ build/
 # Other files
 .DS_Store
 test.csv
+.vscode
