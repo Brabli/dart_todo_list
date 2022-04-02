@@ -113,15 +113,21 @@ class Args extends ArgsInterface {
 
 // @TODO Put this somewhere that makes sense and compare it to removeLast()
 extension RemoveFirst on List {
-  /// Removes the first object from a list.
+  /// Removes and returns the first object in this list.
   ///
-  /// Returns the removed value.
+  /// The list must be growable and non-empty.
+  /// ```dart
+  /// final parts = <String>['head', 'shoulder', 'knees', 'toes'];
+  /// final retVal = parts.removeLast(); // head
+  /// print(parts); // [shoulder, knees, toes]
+  /// ```
   dynamic removeFirst() {
     return removeAt(0);
   }
 }
 
 extension StringExtension on String {
+  /// Captializes the first letter of a string.
   String capitalize() {
     return isEmpty
         ? ''
