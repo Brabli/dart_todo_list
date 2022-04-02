@@ -1,4 +1,4 @@
-import '../enums/option.dart';
+import '../enum/option.dart';
 
 abstract class ArgsInterface {
   /// Returns the passed option

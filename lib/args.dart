@@ -1,5 +1,5 @@
-import 'enums/option.dart';
-import 'interfaces/args_interface.dart';
+import 'enum/option.dart';
+import 'interface/args_interface.dart';
 
 class Args extends ArgsInterface {
   Option? _option;

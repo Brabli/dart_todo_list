@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'package:csv/csv.dart';
-import 'interfaces/list_interface.dart';
+import 'interface/list_interface.dart';
 
 class TodoList extends ListInterface {
   static final String _fields = 'item,timestamp\r\n';
