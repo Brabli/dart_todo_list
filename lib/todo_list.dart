@@ -32,23 +32,23 @@ class TodoList extends ListInterface {
   }
 
   @override
-  void remove(int i) {
-    if (i < 0) {
+  void remove(int index) {
+    if (index < 0) {
       throw Exception('Index cannot be below zero!');
     }
 
     List<List<dynamic>> rows = _getRows();
 
-    if (i > rows.length) {
-      throw Exception('Index $i out of range!');
+    if (index > rows.length) {
+      throw Exception('Index $index out of range!');
     }
 
     if (rows.isEmpty) {
       throw Exception('No items to remove!');
     }
 
-    i = i == 0 ? rows.length - 1 : i - 1;
-    rows.removeAt(i);
+    index = index == 0 ? rows.length - 1 : index - 1;
+    rows.removeAt(index);
 
     _rewriteRows(rows);
   }

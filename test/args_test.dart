@@ -1,6 +1,6 @@
 import 'package:test/test.dart';
-import '../src/args.dart';
-import '../src/enums/option.dart';
+import 'package:dart_todo/args.dart';
+import 'package:dart_todo/enums/option.dart';
 
 void main() {
   group('Args.option', () {

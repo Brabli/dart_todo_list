@@ -103,8 +103,11 @@ class Args extends ArgsInterface {
     }
 
     args.removeFirst();
+    if (args.isEmpty) return null;
+    args[0] = args[0].capitalize();
     String item = args.join(' ').trim();
-    return item.isEmpty ? null : item;
+    print(item);
+    return item;
   }
 }
 
@@ -115,5 +118,11 @@ extension RemoveFirst on List {
   /// Returns the removed value.
   dynamic removeFirst() {
     return removeAt(0);
+  }
+}
+
+extension StringExtension on String {
+  String capitalize() {
+    return "${this[0].toUpperCase()}${substring(1).toLowerCase()}";
   }
 }

@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:csv/csv.dart';
 import 'package:test/test.dart';
-import '../src/todo_list.dart';
+import 'package:dart_todo/todo_list.dart';
 
 void main() {
   group('TodoList', () {
