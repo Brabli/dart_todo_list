@@ -19,6 +19,16 @@ class Args extends ArgsInterface {
     return _option;
   }
 
+  @override
+  List<dynamic>? get optionArgs {
+    return _optionArgs;
+  }
+
+  @override
+  String? get item {
+    return _item;
+  }
+
   /// Returns the option provided as the first argument or null
   Option? _getOption(String firstArg) {
     if (firstArg == '-' || firstArg == '--') {
@@ -49,30 +59,28 @@ class Args extends ArgsInterface {
     }
   }
 
-  @override
-  List<dynamic>? get optionArgs {
-    return _optionArgs;
-  }
-
-  // @TODO Refactor this
-  /// Returns a list of option arguments or null
+  // @TODO continue refactoring
+  /// Returns a List of option arguments or null
   List<String>? _getOptionArgs(String firstArg) {
     if (_option == null) {
       return null;
     }
 
     if (firstArg.startsWith('--')) {
-      List<String> splitBits = firstArg.split('=');
+      var splitBits = firstArg.split('=');
       if (splitBits.length >= 2) {
         splitBits.removeFirst();
-        String argsString =
-            splitBits.reduce((value, element) => value += element);
-        if (argsString == '') {
+        String optionArgs = splitBits.reduce((val, ele) => val += ele);
+
+        if (optionArgs.isEmpty) {
           throw Exception('No option arguments provided!');
         }
+
         List<String> args =
-            argsString.split(',').where((e) => e.isNotEmpty).toList();
-        if (args.isNotEmpty) return args;
+            optionArgs.split(',').where((e) => e.isNotEmpty).toList();
+        if (args.isNotEmpty) {
+          return args;
+        }
       }
 
       return null;
@@ -88,11 +96,6 @@ class Args extends ArgsInterface {
     }
 
     return null;
-  }
-
-  @override
-  String? get item {
-    return _item;
   }
 
   /// Returns the item or null if not provided
