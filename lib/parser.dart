@@ -1,6 +1,6 @@
-import 'package:dart_todo/args.dart';
-import 'enum/option.dart';
 import 'args.dart';
+import 'enum/option.dart';
+import 'extension/extensions.dart';
 
 class Parser {
   /// Parses a list of command line arguments and returns an Args object.
@@ -91,29 +91,5 @@ class Parser {
     String item = args.join(' ').trim().capitalize();
 
     return item;
-  }
-}
-
-// @TODO Put this somewhere that makes sense and compare it to removeLast()
-extension RemoveFirst on List {
-  /// Removes and returns the first object in this list.
-  ///
-  /// The list must be growable and non-empty.
-  /// ```dart
-  /// final parts = <String>['head', 'shoulder', 'knees', 'toes'];
-  /// final retVal = parts.removeLast(); // head
-  /// print(parts); // [shoulder, knees, toes]
-  /// ```
-  dynamic removeFirst() {
-    return removeAt(0);
-  }
-}
-
-extension StringExtension on String {
-  /// Captializes the first letter of a string.
-  String capitalize() {
-    return isEmpty
-        ? ''
-        : "${this[0].toUpperCase()}${substring(1).toLowerCase()}";
   }
 }
