@@ -21,23 +21,13 @@ class TodoList extends ListInterface {
     _todoList.writeAsStringSync(row, mode: FileMode.append);
   }
 
-  /// Creates a row of data to append to a CSV file
-  String _createRow(String item) {
-    int timestamp = DateTime.now().millisecondsSinceEpoch;
-
-    return ListToCsvConverter().convert([
-          [item, timestamp]
-        ]) +
-        '\r\n';
-  }
-
   @override
   void remove(int index) {
     if (index < 0) {
       throw Exception('Index cannot be below zero!');
     }
 
-    List<List<dynamic>> rows = _getRows();
+    var rows = _getRows();
 
     if (index > rows.length) {
       throw Exception('Index $index out of range!');
@@ -51,6 +41,16 @@ class TodoList extends ListInterface {
     rows.removeAt(index);
 
     _rewriteRows(rows);
+  }
+
+  /// Creates a row of data to append to a CSV file
+  String _createRow(String item) {
+    int timestamp = DateTime.now().millisecondsSinceEpoch;
+
+    return ListToCsvConverter().convert([
+          [item, timestamp]
+        ]) +
+        '\r\n';
   }
 
   /// Returns a list of all data rows in the CSV file
