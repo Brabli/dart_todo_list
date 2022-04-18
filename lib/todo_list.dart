@@ -43,7 +43,22 @@ class TodoList extends ListInterface {
     _rewriteRows(rows);
   }
 
-  /// Creates a row of data to append to a CSV file
+  @override
+  List<String> getItems() {
+    var rows = _getRows();
+    // This assumes that the item is first in the list
+    return rows.map((row) => row.first.toString()).toList();
+  }
+
+  /// Returns a List of Lists containing the CSV row values
+  List<List<dynamic>> _getRows() {
+    var rows = CsvToListConverter().convert(_todoList.readAsStringSync());
+    rows.removeAt(0);
+
+    return rows;
+  }
+
+  /// Creates a row of CSV data to append to a CSV file
   String _createRow(String item) {
     int timestamp = DateTime.now().millisecondsSinceEpoch;
 
@@ -51,14 +66,6 @@ class TodoList extends ListInterface {
           [item, timestamp]
         ]) +
         '\r\n';
-  }
-
-  /// Returns a list of all data rows in the CSV file
-  List<List<dynamic>> _getRows() {
-    var rows = CsvToListConverter().convert(_todoList.readAsStringSync());
-    rows.removeAt(0);
-
-    return rows;
   }
 
   /// Rewrites all of the rows in the CSV file
