@@ -55,6 +55,16 @@ void main() {
         expect(() => todoList.remove(0), throwsException);
       });
     });
+
+    group('getItems', () {
+      test('Returns a list of items', () {
+        TodoList todoList = TodoList(path);
+        todoList.add('Item 1');
+        todoList.add('Item 2');
+        var items = todoList.getItems();
+        expect(items, ['Item 1', 'Item 2']);
+      });
+    });
   });
 }
 
